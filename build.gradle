@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testifyproject.junit5:junit5:1.0.6'
+    implementation 'io.rest-assured:rest-assured:5.0.1'
+    implementation 'org.hamcrest:hamcrest-library:2.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task runAddItemTagTests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'add_item'
+    }
+}
+
+task runDeleteItemTagTests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'delete_item'
+    }
+}
